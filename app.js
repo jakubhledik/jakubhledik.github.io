@@ -553,17 +553,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const ctrl = new AppController(light, timer, audio, mode);
 
   // Attach touch/click handler
-  function onInteraction(e) {
-    // Don't trigger on mode toggle clicks
-    if (e.target.closest('#mode-toggle-container')) return;
+  // Na mobilu touchstart + click střelí dvakrát — blokujeme click pokud
+  // proběhl touchstart (příznak _touchHandled).
+  let touchHandled = false;
 
+  function onTouchStart(e) {
+    if (e.target.closest('#mode-toggle-container')) return;
+    touchHandled = true;
     audio.initialize();
     requestFullscreen(document.documentElement);
     ctrl.handleTouch();
   }
 
-  semaphoreEl.addEventListener('touchstart', onInteraction, { passive: true });
-  semaphoreEl.addEventListener('click', onInteraction);
+  function onClick(e) {
+    if (e.target.closest('#mode-toggle-container')) return;
+    if (touchHandled) {
+      // Toto click přišlo po touchstart — ignorujeme (duplikát)
+      touchHandled = false;
+      return;
+    }
+    audio.initialize();
+    requestFullscreen(document.documentElement);
+    ctrl.handleTouch();
+  }
+
+  semaphoreEl.addEventListener('touchstart', onTouchStart, { passive: true });
+  semaphoreEl.addEventListener('click', onClick);
 
   // Suppress context menu on long press
   semaphoreEl.addEventListener('contextmenu', (e) => e.preventDefault());
