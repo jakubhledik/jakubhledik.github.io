@@ -16,7 +16,7 @@
    1. Konfigurace cache
    ================================================================ */
 
-const CACHE_NAME = 'semafor-v1';
+const CACHE_NAME = 'semafor-v2';
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
