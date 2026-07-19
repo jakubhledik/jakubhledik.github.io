@@ -1,6 +1,6 @@
 # Semafor
 
-PWA aplikace, která zobrazuje semafor se dvěma světly. Funguje offline, lze nainstalovat na domovskou obrazovku.
+PWA zobrazující semafor se dvěma světly. Funguje offline, lze nainstalovat na domovskou obrazovku telefonu.
 
 **[→ Otevřít](https://jakubhledik.github.io/semafor)**
 
