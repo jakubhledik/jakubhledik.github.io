@@ -193,6 +193,10 @@ body {
   transform: translateX(-50%);
   z-index: 20;
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .mode-toggle {
@@ -218,7 +222,8 @@ body {
 }
 
 /* Skryjeme nativní checkbox */
-#mode-switch {
+#mode-switch,
+#theme-switch {
   position: absolute;
   opacity: 0;
   width: 0;
@@ -238,7 +243,7 @@ body {
   flex-shrink: 0;
 }
 
-#mode-switch:checked ~ .mode-toggle__track {
+.mode-toggle input[type="checkbox"]:checked ~ .mode-toggle__track {
   background-color: rgba(100, 180, 255, 0.6);
 }
 
@@ -254,13 +259,35 @@ body {
   transition: transform 0.2s ease;
 }
 
-#mode-switch:checked ~ .mode-toggle__track .mode-toggle__thumb {
+.mode-toggle input[type="checkbox"]:checked ~ .mode-toggle__track .mode-toggle__thumb {
   transform: translateX(20px);
 }
 
 
 /* ================================================================
-   7. Landscape orientace
+   7. Světlý režim — třída .theme-light na body
+   ================================================================ */
+
+body.theme-light {
+  background-color: #ffffff;
+}
+
+body.theme-light #semaphore {
+  background-color: #ffffff;
+}
+
+/* V světlém režimu upravíme popisky přepínačů (tmavý text na světlém bg) */
+body.theme-light .mode-toggle {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+body.theme-light .mode-label {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+
+/* ================================================================
+   8. Landscape orientace
    ================================================================ */
 
 @media (orientation: landscape) {
@@ -291,7 +318,7 @@ body {
 
 
 /* ================================================================
-   8. Přístupnost
+   9. Přístupnost
    ================================================================ */
 
 #semaphore:focus-visible #traffic-light-body {

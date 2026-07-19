@@ -543,14 +543,22 @@ async function requestFullscreen(element) {
 document.addEventListener('DOMContentLoaded', () => {
   const semaphoreEl = document.getElementById('semaphore');
   const modeSwitchEl = document.getElementById('mode-switch');
+  const themeSwitchEl = document.getElementById('theme-switch');
 
   const light = new TrafficLight(semaphoreEl);
   const timer = new CountdownTimer();
   const audio = new AudioEngine();
-  const mode  = new ModeManager(modeSwitchEl, (newMode) => {
+  const mode  = new ModeManager(modeSwitchEl, (_newMode) => {
     ctrl.resetToDefault();
   });
   const ctrl = new AppController(light, timer, audio, mode);
+
+  // Přepínač světlý / tmavý režim
+  themeSwitchEl.addEventListener('change', () => {
+    const isLight = themeSwitchEl.checked;
+    document.body.classList.toggle('theme-light', isLight);
+    themeSwitchEl.setAttribute('aria-checked', isLight ? 'true' : 'false');
+  });
 
   // Attach touch/click handler
   // Používáme touchend + preventDefault() aby se nevygeneroval následný click.

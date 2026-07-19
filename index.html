@@ -43,18 +43,32 @@
        ============================================================ -->
   <div id="mode-toggle-container" aria-label="Výběr režimu">
     <label class="mode-toggle" for="mode-switch">
-      <span class="mode-label mode-label--start">Start</span>
+      <span class="mode-label mode-label--start">Odpočet</span>
       <input
         type="checkbox"
         id="mode-switch"
         role="switch"
         aria-checked="false"
-        aria-label="Přepnout na přepínací režim"
+        aria-label="Přepnout na ruční režim"
       />
       <span class="mode-toggle__track">
         <span class="mode-toggle__thumb"></span>
       </span>
-      <span class="mode-label mode-label--toggle">Přepínač</span>
+      <span class="mode-label mode-label--toggle">Ručně</span>
+    </label>
+    <label class="mode-toggle" for="theme-switch">
+      <span class="mode-label mode-label--dark">Tmavý</span>
+      <input
+        type="checkbox"
+        id="theme-switch"
+        role="switch"
+        aria-checked="false"
+        aria-label="Přepnout na světlý režim"
+      />
+      <span class="mode-toggle__track">
+        <span class="mode-toggle__thumb"></span>
+      </span>
+      <span class="mode-label mode-label--light">Světlý</span>
     </label>
   </div>
 
