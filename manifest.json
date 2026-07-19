@@ -1,7 +1,7 @@
 {
   "name": "Semafor",
   "short_name": "Semafor",
-  "description": "Mobilní semafor pro děti — startovací a přepínací režim",
+  "description": "Dopravní semafor se dvěma světly",
   "start_url": "/",
   "display": "standalone",
   "orientation": "any",
